@@ -19,6 +19,7 @@ app.use(cors())
 app.use(express.json())
 // app.use(bodyParser.json({ extended: true }));
 // app.use(bodyParser.urlencoded({ extended: true}));
+app.use('/api', Route);
 
 // Certificate
 const privateKey = fs.readFileSync('privkey.pem', 'utf8'); 
@@ -33,6 +34,8 @@ const credentials = {
 
 const httpsServer = https.createServer(credentials, app);
 
+// Обработка ошибок, последний middleware
+app.use(errorHandler)
 
 const start = async () => {
     try {

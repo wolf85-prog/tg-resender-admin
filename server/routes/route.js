@@ -2,9 +2,7 @@ const Router = require('express')
 const route = new Router()
 const userController = require('../controllers/userController')
 const authMiddleware = require('../middleware/authMiddleware')
-const { newMessage, delMessage, getMessages, getLastMessages, getAllMessages, getCountMessages, 
-    newCountMessage, newCountWMessage, newCountProjects, newCountMessagePretendent,
- } = require('../controllers/messageController')
+const { getAllMessages} = require('../controllers/messageController')
 const { newConversation, getConversation, getConversations } = require('../controllers/conversationController')
 
 route.post('/user/registration', userController.registration)
