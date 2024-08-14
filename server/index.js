@@ -15,10 +15,24 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 
+
 app.use(cors())
 app.use(express.json())
 // app.use(bodyParser.json({ extended: true }));
 // app.use(bodyParser.urlencoded({ extended: true}));
+
+// Certificate
+const privateKey = fs.readFileSync('privkey.pem', 'utf8'); 
+const certificate = fs.readFileSync('cert.pem', 'utf8'); 
+const ca = fs.readFileSync('chain.pem', 'utf8');
+
+const credentials = {
+    key: privateKey,
+    cert: certificate,
+    ca: ca
+};
+
+const httpsServer = https.createServer(credentials, app);
 
 
 const start = async () => {
