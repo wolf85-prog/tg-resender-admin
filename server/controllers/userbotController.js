@@ -65,7 +65,11 @@ class UserbotController {
 
     async getUsers(req, res) {
         try {
-            const users = await UserBot.findAll()
+            const users = await UserBot.findAll({
+                order: [
+                    ['id', 'DESC'],
+                ],
+            })
             return res.status(200).json(users);
         } catch (error) {
             return res.status(500).json(error.message);
