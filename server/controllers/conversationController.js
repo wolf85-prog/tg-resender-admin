@@ -79,7 +79,7 @@ class ConversationController {
 
             conversations.forEach(async (conv, index) => {
                 const groupId = conv.dataValues.members[0]
-                let userbot = users.find((item)=> item.dataValues.chatId === groupId)
+                let userbot = users.find((item)=> item.dataValues.chatId === groupId.toString())
                 const newObj = {
                     id: groupId,
                     name: userbot.lastname + userbot.firstname,
