@@ -3,7 +3,7 @@ const route = new Router()
 const userController = require('../controllers/userController')
 const authMiddleware = require('../middleware/authMiddleware')
 const { getAllMessages} = require('../controllers/messageController')
-const { newConversation, getConversation, getConversations } = require('../controllers/conversationController')
+const { newConversation, getConversation, getConversations, getConversationsTable } = require('../controllers/conversationController')
 const { addUser, getUsers, getUser, editUser, editUserAvatar} = require('../controllers/userbotController')
 
 route.post('/user/registration', userController.registration)
@@ -18,6 +18,8 @@ route.get('/message/get', getAllMessages)
 route.post('/conversation/add', newConversation)
 route.get('/conversation/get/:id', getConversation)
 route.get('/conversations/get', getConversations)
+
+route.get('/conversations/table/get', getConversationsTable)
 
 route.post('/userbots/add', addUser)
 route.get('/userbots/get', getUsers)

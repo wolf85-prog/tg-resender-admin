@@ -1,4 +1,4 @@
-const { Conversation } = require("../models/models");
+const { Conversation, UserBot } = require("../models/models");
 const { Op } = require('sequelize')
 
 class ConversationController {
@@ -55,6 +55,39 @@ class ConversationController {
                 ],
             })
             return res.status(200).json(conversations);
+        } catch (error) {
+            return res.status(500).json(error.message);
+        }
+    }
+
+    async getConversationsTable(req, res) {  
+        try {   
+            const conversations = await Conversation.findAll({
+                order: [
+                    ['id', 'DESC'],
+                ],
+            })
+
+            const users = await UserBot.findAll({
+                order: [
+                    ['id', 'DESC'],
+                ],
+            })
+
+            const groupId = conversations?.members[0]
+            let array = []
+
+            conversations.forEach(async (conv, index) => {
+                let userbot = users.find((item)=> item.chatId === groupId)
+                const newObj = {
+                    id: groupId,
+                    name: userbot.lastname + userbot.firstname,
+                    type: userbot.group.length > 0 ? 'group' : 'user',
+                }
+                array.push(newObj)
+            })
+
+            return res.status(200).json(array);
         } catch (error) {
             return res.status(500).json(error.message);
         }
