@@ -82,12 +82,16 @@ class ConversationController {
                 let userbot = users.find((item)=> item.dataValues.groupId === groupId.toString())
                 console.log("userbot: ", userbot)
 
-                const newObj = {
-                    id: groupId,
-                    //name: userbot ? userbot.dataValues.lastname + ' ' : ''  + userbot ? userbot.dataValues.firstname : '',
-                    //type: userbot?.group.length > 0 ? 'group' : 'user',
-                }
-                array.push(newObj)
+                if (userbot) {
+                    const newObj = {
+                        id: groupId,
+                        //name: userbot ? userbot.dataValues.lastname + ' ' : ''  + userbot ? userbot.dataValues.firstname : '',
+                        //type: userbot?.group.length > 0 ? 'group' : 'user',
+                    }
+                    array.push(newObj)
+                } else {
+                    return res.status(200).json("Беседа не найдена");
+                }        
             })
 
             return res.status(200).json(array);
