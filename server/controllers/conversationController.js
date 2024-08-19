@@ -83,7 +83,7 @@ class ConversationController {
 
                 const newObj = {
                     id: groupId,
-                    name: userbot ? userbot.lastname + ' ' : ''  + userbot ? userbot.firstname : '',
+                    //name: userbot ? userbot.lastname + ' ' : ''  + userbot ? userbot.firstname : '',
                     //type: userbot?.group.length > 0 ? 'group' : 'user',
                 }
                 array.push(newObj)
