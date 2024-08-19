@@ -74,7 +74,7 @@ class ConversationController {
                 ],
             })
 
-            const groupId = conversations?.members[0]
+            const groupId = conversations.dataValues.members[0]
             let array = []
 
             conversations.forEach(async (conv, index) => {
