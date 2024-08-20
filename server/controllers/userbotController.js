@@ -96,18 +96,29 @@ class UserbotController {
                 let conv = conversations.find((item)=> item.dataValues.members[0] === user.dataValues.groupId.toString())
                 console.log("conv: ", conv)
 
-                //if (userbot1) {
+                if (conv) {
                     const newObj = {
                         id1: user.dataValues.groupId !== null ? user.dataValues.groupId : user.dataValues.chatId,
                         name1: user.dataValues.lastname + ' '  + user.dataValues.firstname,
-                        type1: user.dataValues.groupId !== null ? 'group' : 'user',//userbot?.group.length > 0 ? 'group' : 'user',
-                        status1: conv ? 'link' : 'no connection',
-                        id2: conv ? conv.dataValues.groupId : '',
-                        name2: conv ? conv.dataValues.group : '',
-                        type2: user.dataValues.groupId !== null ? 'group' : 'user',//userbot?.group.length > 0 ? 'group' : 'user',
+                        type1: user.dataValues.groupId !== null ? 'group' : 'user',
+                        status1: 'link',
+                        id2: conv.dataValues.groupId,
+                        name2: conv.dataValues.group,
+                        type2: 'данные',
                     }
                     array.push(newObj)
-                //}
+                } else {
+                    const newObj = {
+                        id1: user.dataValues.groupId !== null ? user.dataValues.groupId : user.dataValues.chatId,
+                        name1: user.dataValues.lastname + ' '  + user.dataValues.firstname,
+                        type1: user.dataValues.groupId !== null ? 'group' : 'user',
+                        status1: 'no connection',
+                        id2: 'нет',
+                        name2: 'нет',
+                        type2: 'нет',
+                    }
+                    array.push(newObj) 
+                }
             })
 
             return res.status(200).json(array);
