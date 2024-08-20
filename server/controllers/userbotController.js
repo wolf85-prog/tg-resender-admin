@@ -102,9 +102,9 @@ class UserbotController {
                         name1: user.dataValues.lastname + ' '  + user.dataValues.firstname,
                         type1: user.dataValues.groupId !== null ? 'group' : 'user',
                         status1: 'link',
-                        id2: conv.dataValues.groupId,
-                        name2: conv.dataValues.group,
-                        type2: 'данные',
+                        id2: conv.dataValues.members[1],
+                        name2: user.dataValues.group.toString(),
+                        type2: 'group',
                     }
                     array.push(newObj)
                 } else {
