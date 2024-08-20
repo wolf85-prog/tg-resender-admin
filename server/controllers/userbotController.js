@@ -107,9 +107,9 @@ class UserbotController {
                         type2: 'group',
                     }
                     array.push(newObj)
-                } else {
-                    let userB = users.find((item)=> conv.dataValues.members[1] === item.dataValues.groupId.toString())
-                    if (!userB) {
+                } else {     
+                    let conv2 = conversations.find((item)=> item.dataValues.members[1] === user.dataValues.groupId.toString())              
+                    if (!conv2) {
                         const newObj = {
                             id1: user.dataValues.groupId !== null ? user.dataValues.groupId : user.dataValues.chatId,
                             name1: user.dataValues.lastname + ' '  + user.dataValues.firstname,
@@ -120,8 +120,7 @@ class UserbotController {
                             type2: 'null',
                         }
                         array.push(newObj)
-                    }
-                     
+                    }   
                 }
             })
 
