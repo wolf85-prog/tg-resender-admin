@@ -101,11 +101,10 @@ class UserbotController {
                         id1: user.dataValues.groupId !== null ? user.dataValues.groupId : user.dataValues.chatId,
                         name1: user.dataValues.lastname + ' '  + user.dataValues.firstname,
                         type1: user.dataValues.groupId !== null ? 'group' : 'user',//userbot?.group.length > 0 ? 'group' : 'user',
-                        status1: '',
-                        id2: '',
-                        name2: '',//userbot1.dataValues.lastname + ' '  + userbot1.dataValues.firstname,
-                        type2: '',//userbot?.group.length > 0 ? 'group' : 'user',
-                        status2: '',
+                        status1: conv ? 'link' : 'no connection',
+                        id2: conv ? conv.dataValues.groupId : '',
+                        name2: conv ? conv.dataValues.group : '',
+                        type2: user.dataValues.groupId !== null ? 'group' : 'user',//userbot?.group.length > 0 ? 'group' : 'user',
                     }
                     array.push(newObj)
                 //}
