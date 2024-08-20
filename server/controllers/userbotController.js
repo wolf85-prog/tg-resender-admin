@@ -94,10 +94,9 @@ class UserbotController {
 
             users.forEach(async (user, index) => {
                 let conv = conversations.find((item)=> item.dataValues.members[0] === user.dataValues.groupId.toString())
-                let userB = users.find((item)=> conv.dataValues.members[1] === item.dataValues.groupId.toString())
-                //console.log("conv: ", conv)
 
                 if (conv) {
+                    let userB = users.find((item)=> conv.dataValues.members[1] === item.dataValues.groupId.toString())
                     const newObj = {
                         id1: user.dataValues.groupId !== null ? user.dataValues.groupId : user.dataValues.chatId,
                         name1: user.dataValues.lastname + ' '  + user.dataValues.firstname,
