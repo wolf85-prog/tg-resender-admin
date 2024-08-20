@@ -100,7 +100,7 @@ class UserbotController {
                     const newObj = {
                         id1: user.dataValues.chatId,
                         name1: user.dataValues.lastname + ' '  + user.dataValues.firstname,
-                        type1: '',//userbot?.group.length > 0 ? 'group' : 'user',
+                        type1: user.dataValues.groupId !== null ? 'group' : 'user',//userbot?.group.length > 0 ? 'group' : 'user',
                         status1: '',
                         id2: '',
                         name2: '',//userbot1.dataValues.lastname + ' '  + userbot1.dataValues.firstname,
