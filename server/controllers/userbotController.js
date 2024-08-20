@@ -93,7 +93,7 @@ class UserbotController {
             let array = []
 
             users.forEach(async (user, index) => {
-                let conv = conversations.find((item)=> item.dataValues.member[0] === user.dataValues.groupId.toString())
+                let conv = conversations.find((item)=> item.dataValues.members[0] === user.dataValues.groupId.toString())
                 console.log("conv: ", conv)
 
                 //if (userbot1) {
