@@ -113,9 +113,9 @@ class UserbotController {
                         name1: user.dataValues.lastname + ' '  + user.dataValues.firstname,
                         type1: user.dataValues.groupId !== null ? 'group' : 'user',
                         status1: 'no connection',
-                        id2: 'нет',
-                        name2: 'нет',
-                        type2: 'нет',
+                        id2: 'null',
+                        name2: 'null',
+                        type2: 'null',
                     }
                     array.push(newObj) 
                 }
