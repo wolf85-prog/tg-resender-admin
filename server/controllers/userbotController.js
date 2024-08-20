@@ -132,6 +132,21 @@ class UserbotController {
         }
     }
 
+    async getUsersGroup(req, res) {
+        const {id} = req.params  
+        try {
+            const users = await UserBot.findAll({
+                order: [
+                    ['id', 'DESC'],
+                ],
+                where: {groupId: id} 
+            })
+            return res.status(200).json(users);
+        } catch (error) {
+            return res.status(500).json(error.message);
+        }
+    }
+
     async getUser(req, res) {
         const {id} = req.params
         try {
