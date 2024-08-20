@@ -98,6 +98,7 @@ class UserbotController {
                 if (conv) {
                     let userB = users.find((item)=> conv.dataValues.members[1] === item.dataValues.groupId.toString())
                     const newObj = {
+                        id: index+1,
                         id1: user.dataValues.groupId !== null ? user.dataValues.groupId : user.dataValues.chatId,
                         name1: user.dataValues.lastname + ' '  + user.dataValues.firstname,
                         type1: user.dataValues.groupId !== null ? 'group' : 'user',
@@ -111,6 +112,7 @@ class UserbotController {
                     let conv2 = conversations.find((item)=> item.dataValues.members[1] === user.dataValues.groupId.toString())              
                     if (!conv2) {
                         const newObj = {
+                            id: index+1,
                             id1: user.dataValues.groupId !== null ? user.dataValues.groupId : user.dataValues.chatId,
                             name1: user.dataValues.lastname + ' '  + user.dataValues.firstname,
                             type1: user.dataValues.groupId !== null ? 'group' : 'user',
