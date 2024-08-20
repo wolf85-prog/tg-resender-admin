@@ -1,4 +1,4 @@
-const {UserBot} = require('../models/models')
+const {UserBot, Conversation} = require('../models/models')
 const ApiError = require('../error/ApiError')
 
 class UserbotController {
@@ -71,6 +71,47 @@ class UserbotController {
                 ],
             })
             return res.status(200).json(users);
+        } catch (error) {
+            return res.status(500).json(error.message);
+        }
+    }
+
+    async getUsersTable(req, res) {
+        try {
+            const users = await UserBot.findAll({
+                order: [
+                    ['id', 'DESC'],
+                ],
+            })
+
+            const conversations = await Conversation.findAll({
+                order: [
+                    ['id', 'DESC'],
+                ],
+            })
+
+            let array = []
+
+            users.forEach(async (user, index) => {
+                let conv = conversations.find((item)=> item.dataValues.member[0] === user.dataValues.groupId.toString())
+                console.log("conv: ", conv)
+
+                //if (userbot1) {
+                    const newObj = {
+                        id1: user.dataValues.chatId,
+                        name1: user.dataValues.lastname + ' '  + user.dataValues.firstname,
+                        type1: '',//userbot?.group.length > 0 ? 'group' : 'user',
+                        status1: '',
+                        id2: '',
+                        name2: '',//userbot1.dataValues.lastname + ' '  + userbot1.dataValues.firstname,
+                        type2: '',//userbot?.group.length > 0 ? 'group' : 'user',
+                        status2: '',
+                    }
+                    array.push(newObj)
+                //}
+            })
+
+            return res.status(200).json(array);
         } catch (error) {
             return res.status(500).json(error.message);
         }
