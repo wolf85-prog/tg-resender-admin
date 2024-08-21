@@ -1,4 +1,4 @@
-const {UserBot, Conversation} = require('../models/models')
+const {UserBot, Conversationbot} = require('../models/models')
 const ApiError = require('../error/ApiError')
 
 class UserbotController {
@@ -84,7 +84,7 @@ class UserbotController {
                 ],
             })
 
-            const conversations = await Conversation.findAll({
+            const conversations = await Conversationbot.findAll({
                 order: [
                     ['id', 'DESC'],
                 ],

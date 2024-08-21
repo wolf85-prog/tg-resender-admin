@@ -1,4 +1,4 @@
-const { Conversation, UserBot } = require("../models/models");
+const { Conversationbot, UserBot } = require("../models/models");
 const { Op } = require('sequelize')
 
 class ConversationController {
@@ -10,7 +10,7 @@ class ConversationController {
             const {senderId, receiverId} = req.body
 
             //найти беседу
-            const exist = await Conversation.findOne({
+            const exist = await Conversationbot.findOne({
                 where: { 
                     members: {
                         [Op.contains]: [senderId]
@@ -21,7 +21,7 @@ class ConversationController {
                 return res.status(200).json(`conversation already exist`);
             }
 
-            await Conversation.create({
+            await Conversationbot.create({
                 members: [senderId, receiverId]
             }) 
             return res.status(200).json(`coversation saved sucessfully`)
@@ -34,7 +34,7 @@ class ConversationController {
         try {
             const chatId = req.params.id
     
-            const conversation = await Conversation.findOne({
+            const conversation = await Conversationbot.findOne({
                 where: {
                     members: {
                         [Op.contains]: [chatId]
@@ -49,7 +49,7 @@ class ConversationController {
 
     async getConversations(req, res) {  
         try {   
-            const conversations = await Conversation.findAll({
+            const conversations = await Conversationbot.findAll({
                 order: [
                     ['id', 'DESC'],
                 ],
@@ -62,7 +62,7 @@ class ConversationController {
 
     async getConversationsTable(req, res) {  
         try {   
-            const conversations = await Conversation.findAll({
+            const conversations = await Conversationbot.findAll({
                 order: [
                     ['id', 'DESC'],
                 ],
