@@ -3,7 +3,7 @@ const route = new Router()
 const userController = require('../controllers/userController')
 const authMiddleware = require('../middleware/authMiddleware')
 const { getAllMessages} = require('../controllers/messageController')
-const { newConversation, getConversation, getConversations, getConversationsTable } = require('../controllers/conversationController')
+const { newConversation, getConversation, getConversations } = require('../controllers/conversationController')
 const { addUser, getUsers, getUsersTable, getUser, editUser, editUserAvatar, getUsersGroup} = require('../controllers/userbotController')
 
 route.post('/user/registration', userController.registration)
