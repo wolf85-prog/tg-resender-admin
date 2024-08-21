@@ -19,8 +19,6 @@ route.post('/conversation/add', newConversation)
 route.get('/conversation/get/:id', getConversation)
 route.get('/conversations/get', getConversations)
 
-route.get('/conversations/table/get', getConversationsTable)
-
 route.post('/userbots/add', addUser)
 route.get('/userbots/get', getUsers)
 route.get('/userbots/table/get', getUsersTable)
