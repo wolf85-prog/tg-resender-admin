@@ -103,6 +103,7 @@ class UserbotController {
                         name1: user.dataValues.lastname + ' '  + user.dataValues.firstname,
                         type1: user.dataValues.groupId !== null ? 'group' : 'user',
                         status1: 'link',
+                        bot: conv.dataValues.bot,
                         id2: conv.dataValues.members[1],
                         name2: userB.dataValues.lastname + ' '  + userB.dataValues.firstname,
                         type2: 'group',
